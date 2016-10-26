@@ -3,6 +3,7 @@ package serhii_potapov.test_automation.pages.factory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.HashMap;
@@ -16,11 +17,14 @@ public class DriverFactory {
 
     public static final String FIREFOX = "Firefox";
     public static final String CHROME = "Chrome";
+    public static final String OPERA = "Opera";
+    private static final String DRIVER_NAME_OPERA = "webdriver.opera.driver";
+    private static final String PATH_TO_DRIVER_OPERA = "driver\\operadriver.exe";
     private static final String DRIVER_NAME = "webdriver.chrome.driver";
     private static final String PATH_TO_DRIVER = "driver\\chromedriver.exe";
 
     static {
-        System.setProperty(DRIVER_NAME, PATH_TO_DRIVER);
+        System.setProperty(DRIVER_NAME_OPERA, PATH_TO_DRIVER_OPERA);
     }
 
     private static Map<String, WebDriver> drivers = new HashMap<>();
@@ -32,6 +36,12 @@ public class DriverFactory {
                 case FIREFOX: {
                     driver = new FirefoxDriver();
                     drivers.put(FIREFOX, driver);
+                    break;
+                }
+                case OPERA: {
+                    DesiredCapabilities operaCapabilities = DesiredCapabilities.opera();
+                    driver = new OperaDriver(operaCapabilities);
+                    drivers.put(OPERA, driver);
                     break;
                 }
                 case CHROME: {
@@ -46,7 +56,7 @@ public class DriverFactory {
             }
         }
         assert driver != null;
-        driver.manage().window().maximize();
+
         return driver;
     }
 }

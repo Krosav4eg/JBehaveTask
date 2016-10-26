@@ -27,7 +27,8 @@ public class EmailSteps {
 
     @BeforeStory
     public void setUp() {
-        driver = getDriver("Firefox");
+        driver = getDriver("Opera");
+        driver.manage().window().maximize();
     }
 
     @Given("I launch http://www.i.ua/ page")
