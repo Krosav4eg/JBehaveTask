@@ -1,0 +1,13 @@
+node {
+stage ('SCM checkout'){
+git "https://github.com/Krosav4eg/JBehaveTask.git"
+}
+stage ('Build'){
+dir("JBehaveTask") {
+sh "mvn clean install"
+}
+dir('JBehaveTask/target') {
+sh "java -jar C:\Users\Serhii_Potapov\IdeaProjects\JBehaveTask\target\task7_ta-1.0-SNAPSHOT.jar"
+}
+}
+}

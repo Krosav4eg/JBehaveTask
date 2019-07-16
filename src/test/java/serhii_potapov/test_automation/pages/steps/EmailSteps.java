@@ -27,7 +27,7 @@ public class EmailSteps {
 
     @BeforeStory
     public void setUp() {
-        driver = getDriver("Opera");
+        driver = getDriver("Chrome");
         driver.manage().window().maximize();
     }
 

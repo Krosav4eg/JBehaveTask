@@ -24,7 +24,7 @@ public class DriverFactory {
     private static final String PATH_TO_DRIVER = "driver\\chromedriver.exe";
 
     static {
-        System.setProperty(DRIVER_NAME_OPERA, PATH_TO_DRIVER_OPERA);
+        System.setProperty(DRIVER_NAME, PATH_TO_DRIVER);
     }
 
     private static Map<String, WebDriver> drivers = new HashMap<>();
